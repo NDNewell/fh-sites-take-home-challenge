@@ -20,6 +20,17 @@ class PokerHand {
     }
   }
 
+  countCardValues() {
+    const cardValues = {};
+
+    for (const card of this.cards) {
+      const value = this.convertValueToNumber(card[0]);
+      cardValues[value] = (cardValues[value] || 0) + 1;
+    }
+
+    return cardValues;
+  }
+
   getRank() {
     // Implement poker hand ranking
     return 'Royal Flush';
