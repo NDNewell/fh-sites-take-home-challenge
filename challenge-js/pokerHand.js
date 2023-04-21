@@ -108,12 +108,21 @@ class PokerHand {
     const maxOccurrences = Math.max(...occurrences);
     const minOccurrences = Math.min(...occurrences);
 
-    // Here we check to see if the hand is a Royal Flush or Straight Flush
-    // If it is, we check to see if the hand contains an Ace because an Ace is the
-    // highest card value in a Royal Flush
-    // We also need to consider the suit of the cards are the same
+    // Check if the hand is a Flush and a Straight, which is a requirement for both
+    // Royal Flush and Straight Flush.
+    // If the hand meets these conditions, we first sort the cards in descending
+    // order based on their values.
+    // Then, we check if the highest card is an Ace and the second-highest card is a
+    // King, both with the same suit.
+    // If these conditions are met, it means the hand is a Royal Flush.
+    // If the highest card is not an Ace or the second-highest card is not a King of
+    // the same suit,
+    // it indicates that the hand is a Straight Flush, since it is both a Flush and a
+    // Straight.
     if (isFlush && isStraight) {
-      return this.cards.some(card => card[0] === 'A' && card[1] === this.cards[0][1]) ? 'Royal Flush' : 'Straight Flush';
+      // Since the hand is already a Straight Flush, we can simply check if the highest card is an Ace to determine if it's a Royal Flush.
+      const highestCard = this.cards.reduce((highest, card) => this.convertValueToNumber(card[0]) > this.convertValueToNumber(highest[0]) ? card : highest, this.cards[0]);
+      return highestCard[0] === 'A' ? 'Royal Flush' : 'Straight Flush';
     }
 
 

@@ -6,7 +6,7 @@ var PokerHand = require('../pokerHand.js');
  */
 describe('Rank a Royal Flush', function() {
   it('Return royal flush when hand given', function() {
-    var hand = new PokerHand('As Ks Qs Js 10s');
+    var hand = new PokerHand('As Ks Qs Js Ts');
     assert.equal(hand.getRank(), 'Royal Flush');
   });
 });
@@ -16,7 +16,7 @@ describe('Rank a Royal Flush', function() {
  */
 describe('Rank a Pair', function() {
   it('Return one pair when hand given', function() {
-    var hand = new PokerHand('Ah As 10c 7d 6s');
+    var hand = new PokerHand('Ah As Tc 7d 6s');
 
     assert.equal(hand.getRank(), 'One Pair');
   });
