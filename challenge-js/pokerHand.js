@@ -102,10 +102,13 @@ class PokerHand {
     const minOccurrences = Math.min(...occurrences);
 
     // Here we check to see if the hand is a Royal Flush or Straight Flush
-    // If it is, we check to see if the hand contains an Ace because an Ace is the highest card value in a Royal Flush
+    // If it is, we check to see if the hand contains an Ace because an Ace is the
+    // highest card value in a Royal Flush
+    // We also need to consider the suit of the cards are the same
     if (isFlush && isStraight) {
-      return this.cards.some(card => card[0] === 'A') ? 'Royal Flush' : 'Straight Flush';
+      return this.cards.some(card => card[0] === 'A' && card[1] === this.cards[0][1]) ? 'Royal Flush' : 'Straight Flush';
     }
+
 
     // Here we check to see if the hand is a Four of a Kind
     // It's simple to check for this because if the hand is a Four of a Kind, the
