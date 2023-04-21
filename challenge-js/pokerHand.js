@@ -71,18 +71,25 @@ class PokerHand {
   // If it isn't, we return false because the hand is not a Straight
   // If we make it through the loop without returning false, we return true
   // because the hand is a Straight
+  // We also handle the case where the Ace is used as the lowest card in the
+  // Straight
   isStraight() {
     const cardValues = this.cards.map(card => this.convertValueToNumber(card[0]));
     cardValues.sort((a, b) => a - b);
 
     for (let i = 1; i < cardValues.length; i++) {
       if (cardValues[i] !== cardValues[i - 1] + 1) {
+        if (i === 4 && cardValues[i] === 14 && cardValues[0] === 2) {
+          // Handle the case where Ace is used as the lowest card
+          return true;
+        }
         return false;
       }
     }
 
     return true;
   }
+
 
   // Here we're checking for the various card rankings
   // We do this by checking for the highest card value, then the second highest, etc.
