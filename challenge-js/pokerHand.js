@@ -90,7 +90,6 @@ class PokerHand {
     return true;
   }
 
-
   // Here we're checking for the various card rankings
   // We do this by checking for the highest card value, then the second highest, etc.
   // This is done in the following order of precedence: Royal Flush, Straight Flush
@@ -115,7 +114,6 @@ class PokerHand {
     if (isFlush && isStraight) {
       return this.cards.some(card => card[0] === 'A' && card[1] === this.cards[0][1]) ? 'Royal Flush' : 'Straight Flush';
     }
-
 
     // Here we check to see if the hand is a Four of a Kind
     // It's simple to check for this because if the hand is a Four of a Kind, the
